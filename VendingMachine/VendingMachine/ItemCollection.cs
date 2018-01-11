@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,38 +9,37 @@ namespace VendingMachine
 {
     public class ItemCollection
     {
-        private List<ContainableItem> ItemList = new List<ContainableItem>();
+        private List<ContainableItem> itemCollectionList = new List<ContainableItem>();
         public void Add(ContainableItem containableItem)
         {
-            ItemList.Add(containableItem);
+            itemCollectionList.Add(containableItem);
         }
 
         public void Remove(string product)
         {
-            ItemList.Remove(GetItem(product));
+            itemCollectionList.Remove(GetItem(product));
         }
 
         public int Count()
         {
-            return ItemList.Count();
+            return itemCollectionList.Count();
         }
 
         public ContainableItem GetItem(string product)
         {
-            foreach (ContainableItem Item in ItemList)
+            foreach (ContainableItem Item in itemCollectionList)
             {
-                if (Item.Name == product) return Item;
+                if (Item.Product.Name == product) return Item;
                 else return null;
             }
             return null;
         }
-
-        public override string ToString()
+        public string AllProductList()
         {
-            string buffer = "";
-            foreach (ContainableItem Item in ItemList)
+            string buffer="";
+            foreach (ContainableItem Item in itemCollectionList)
             {
-                buffer += "\nProduct Name: " + Item.Name + "\nPrice: " + Item.Price + "\nCategory: " + Item.Category.ToString() + "\nRow: "+ Item.Row + "\nColumn: "+ Item.Column+ "\n";
+                buffer += Item.ToString();
             }
             return buffer;
         }

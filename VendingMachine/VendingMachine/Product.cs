@@ -9,32 +9,32 @@ namespace VendingMachine
    
     public class Product
     {
-        private string name;
-        private double price;
-        private ProductCategory category;
-
-        public string Name { get => name; set => name = value; }
-        public double Price { get => price; set => price = value; }
-        public ProductCategory Category { get => category; set => category = value; }
+        public string Name { get; }
+        public double Price { get; }
+        public ProductCategory Category { get; private set; }
        
 
-        public Product (string name, double price, string categoryName, string description)
+        public Product (string productName, double productPrice, string categoryName, string description)
         {
-            this.name = name;
-            this.price = price;
-            category = new ProductCategory(categoryName, description);
+            Name= productName;
+            Price = productPrice;
+            Category = new ProductCategory(categoryName, description);
         }
 
         public Product(string name, double price)
         {
-            this.name = name;
-            this.price = price;
-            this.category = new ProductCategory();
+            Name= name;
+            Price = price;
+            Category= new ProductCategory();
         }
         public Product()
         {
 
         }
-     
+        public override string ToString()
+        {
+            return "\nProduct Name: " + Name + "\nProduct Price: " + Price + Category.ToString();
+        }
+
     }
 }

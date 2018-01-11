@@ -6,27 +6,29 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
-    public class ContainableItem : Product
+    public class ContainableItem
     {
-        private int row;
-        private int column;
-        private int size;
+        public int Row { get; }
+        public int Column { get; }
+        public int Size { get; }
+        public Product Product{ get;}
 
-        public ContainableItem(string name, double price, string categoryName, string description, int row, int column, int size) :
-            base(name, price, categoryName, description)
+
+        public ContainableItem(Product product, int row,int column, int size)
         {
-            this.row = row;
-            this.column = column;
-            this.size = size;
+            Row = row;
+            Column = column;
+            Size = size;
+            Product = product;
         }
-
         public ContainableItem()
         {
+
         }
 
-        public int Row { get => row; set => row = value; }
-        public int Column { get => column; set => column = value; }
-        public int Size { get => size; set => size = value; }
+        public override string ToString()
+        {
+            return Product.ToString() + "\nRow: " + Row + "\nColumn: " + Column + "\nSize" + Size;
+        }
     }
-
 }

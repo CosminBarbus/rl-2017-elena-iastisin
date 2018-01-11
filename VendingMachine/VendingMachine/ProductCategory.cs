@@ -7,26 +7,24 @@ using System.Threading.Tasks;
 namespace VendingMachine
 {
     public class ProductCategory
-    {
-        private string categoryName;
-        private string description;
+    { 
 
-        public string CategoryName { get => categoryName; set => categoryName = value; }
-        public string Description { get => description; set => description = value; }
+        public string CategoryName { get; }
+        public string Description { get; }
 
         public ProductCategory()
         {
-            this.categoryName = "No category";
-            this.description = "No description";
+            CategoryName = "No category";
+            Description = "No description";
         }
         public ProductCategory(string categoryName, string description)
         {
-            this.categoryName = categoryName;
-            this.description = description;
+            CategoryName = categoryName;
+            Description = description;
         }
         public override string ToString()
         {
-            return categoryName + "\nDescription: " + description;
+            return "\nProduct Category : " + CategoryName + "\nDescription: " + Description;
         }
     }
 }
